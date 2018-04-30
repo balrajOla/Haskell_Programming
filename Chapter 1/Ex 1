@@ -17,4 +17,12 @@ Answer: 𝜆𝑎.(𝜆𝑏.𝑎𝑎𝑏) this is the correct answer because when
         we land up in having the same reduced format.
 
 
+3. 𝜆𝑥𝑦𝑧.𝑧𝑥 
+    a) 𝜆𝑥.(𝜆𝑦.(𝜆𝑧.𝑧)) 
+    b) 𝜆𝑡𝑜𝑠.𝑠𝑡 
+    c) 𝜆𝑚𝑛𝑝.𝑚𝑛
+
+Answer: 𝜆𝑡𝑜𝑠.𝑠𝑡 this is the answer using Alpha Equivalence
+
+
 
