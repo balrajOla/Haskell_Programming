@@ -1,0 +1,83 @@
+1. Combinators Determine if each of the following are combinators or not. 
+    1. 𝜆𝑥.𝑥𝑥𝑥 
+    2. 𝜆𝑥𝑦.𝑧𝑥
+    3. 𝜆𝑥𝑦𝑧.𝑥𝑦(𝑧𝑥) 
+    4. 𝜆𝑥𝑦𝑧.𝑥𝑦(𝑧𝑥𝑦) 
+    5. 𝜆𝑥𝑦.𝑥𝑦(𝑧𝑥𝑦)
+
+Answer: Combinators is a lambda term with no free variable.
+        𝜆𝑥.𝑥𝑥𝑥, 𝜆𝑥𝑦𝑧.𝑥𝑦(𝑧𝑥), 𝜆𝑥𝑦𝑧.𝑥𝑦(𝑧𝑥𝑦 are Combinators
+
+2. Determine if each of the following can be reduced to a normal form or if they diverge. 
+    1. 𝜆𝑥.𝑥𝑥𝑥 
+    2. (𝜆𝑧.𝑧𝑧)(𝜆𝑦.𝑦𝑦) 
+    3. (𝜆𝑥.𝑥𝑥𝑥)𝑧
+Answer: 𝜆𝑥.𝑥𝑥𝑥 this cannot be reduced any further. 
+        (𝜆𝑧.𝑧𝑧)(𝜆𝑦.𝑦𝑦) is a diverge lambda expression
+        (𝜆𝑥.𝑥𝑥𝑥)𝑧 this expression can be reduced to zzz by replacing x with z i.e. [x:=z]
+
+3. Beta reduction
+   1. (𝜆𝑎𝑏𝑐.𝑐𝑏𝑎)𝑧𝑧(𝜆𝑤𝑣.𝑤)
+      (((𝜆𝑎𝑏𝑐.𝑐𝑏𝑎)𝑧)𝑧)(𝜆𝑤𝑣.𝑤)
+      (((𝜆𝑎.(𝜆𝑏.(𝜆𝑐.𝑐𝑏𝑎)))𝑧)𝑧)(𝜆𝑤𝑣.𝑤)
+      replacing [a:=z]
+      ((𝜆𝑏.(𝜆𝑐.𝑐𝑏z))𝑧)(𝜆𝑤𝑣.𝑤)
+      replacing [b:=z]
+      (𝜆𝑐.𝑐zz)(𝜆𝑤𝑣.𝑤)
+      replacing [c:=(𝜆𝑤𝑣.𝑤)]
+      (𝜆𝑤𝑣.𝑤)zz
+      ((𝜆𝑤𝑣.𝑤)z)z
+      replacing [w:=z]
+      then replacing [v:=z]
+      z
+
+    2. (𝜆𝑥.𝜆𝑦.𝑥𝑦𝑦)(𝜆𝑎.𝑎)𝑏
+       replacing x to (𝜆𝑎.𝑎)
+       (𝜆𝑦.(𝜆𝑎.𝑎)yy)b
+       [y:=b]
+       (𝜆𝑎.𝑎)bb
+       [a:=b]
+       bb
+
+    3. (𝜆𝑦.𝑦)(𝜆𝑥.𝑥𝑥)(𝜆𝑧.𝑧𝑞)
+       [y:=(𝜆𝑥.𝑥𝑥)]
+       (𝜆𝑥.𝑥𝑥)(𝜆𝑧.𝑧𝑞)
+       [x:=(𝜆𝑧.𝑧𝑞)]
+       (𝜆𝑧.𝑧𝑞)(𝜆𝑧.𝑧𝑞)
+       [z:=(𝜆𝑧.𝑧𝑞)]
+       (𝜆𝑧.𝑧𝑞)q
+       [z:=q]
+       qq
+
+    4. (𝜆𝑧.𝑧)(𝜆𝑧.𝑧𝑧)(𝜆𝑧.𝑧𝑦)
+       using alpha equivalence
+       (𝜆m.m)(𝜆n.nn)(𝜆o.o𝑦)
+       Beta reduction
+       [m:=(𝜆n.nn)]
+       (𝜆n.nn)(𝜆o.o𝑦)
+       [n:=(𝜆o.o𝑦)]
+       (𝜆o.o𝑦)(𝜆o.o𝑦)
+       
+    5. (𝜆𝑥.𝜆𝑦.𝑥𝑦𝑦)(𝜆𝑦.𝑦)𝑦
+       using alpha equivalence
+       (𝜆𝑥.𝜆𝑦.𝑥𝑦𝑦)(𝜆m.m)n
+       beta reduction
+       (𝜆𝑦.(𝜆m.m)yy)n
+       nn
+
+    6. (𝜆𝑎.𝑎𝑎)(𝜆𝑏.𝑏𝑎)𝑐
+       using alpha equivalence
+       (𝜆𝑎.𝑎𝑎)(𝜆𝑏.𝑏z)𝑐
+       beta reduction
+       (𝜆𝑏.𝑏z)(𝜆𝑏.𝑏z)𝑐
+       (𝜆𝑏.𝑏z)z𝑐
+       zzc
+
+    7. (𝜆𝑥𝑦𝑧.𝑥𝑧(𝑦𝑧))(𝜆𝑥.𝑧)(𝜆𝑥.𝑎)
+       alpha equivalence
+       (𝜆𝑥𝑦𝑧.𝑥𝑧(𝑦𝑧))(𝜆m.n)(𝜆o.𝑎)
+       beta reduction
+       (𝜆yz.(𝜆m.n)z(yz))(𝜆o.𝑎)
+       𝜆z.(𝜆m.n)z((𝜆o.𝑎)z)
+       𝜆z.na
+
